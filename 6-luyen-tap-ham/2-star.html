@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="result"></p>
+    <script>
+        let stars = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+        let horoscopeSign = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+        let result = document.getElementById("result")
+
+        function checkStar(star) {
+            let flag = false;
+            for (let i = 0; i < stars.length; i++) {
+                if (star == stars[i]) {
+                    flag = true;
+
+                }
+            }
+            if (flag != true) {
+                alert("Can not find the star")
+            }
+            return flag, star;
+        }
+
+        function displayHoroscope(star1) {
+          
+            
+            let horoscope;
+            while (checkStar(star1)== true) {  
+                  
+                switch (star1) {
+                    case 'Polaris':
+                        horoscope = horoscopeSign[0];
+                        break;
+                    case 'Aldebaran':
+                        horoscope = horoscopeSign[1];
+                        break;
+                    case "Deneb":
+                        horoscope = horoscopeSign[2];
+                        break;
+                    case "Vega":
+                        horoscope = horoscopeSign[3];
+                        break;
+                    case "Altair":
+                        horoscope = horoscopeSign[4];
+                        break;
+                    case "Dubhe":
+                        horoscope = horoscopeSign[5];
+                        break;
+                    case "Regulus":
+                        horoscope = horoscopeSign[6];
+                        break;
+
+                }
+                result.innerHTML = `The horoscope is : ${horoscope}`;
+                break;
+
+            }
+        }
+        let star1 = prompt("Input the star name");
+        displayHoroscope(star1)
+    </script>
+</body>
+
+</html>
+
+3. Square

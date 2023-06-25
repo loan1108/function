@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let number = prompt("Input any number");
+        function checkNumber(number){
+            if(number %1 ==0 ){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        function reverse(number){
+            while(checkNumber(number) == true){
+                let numbers=[]
+                for(let i = number.length -1 ; i >= 0 ; i--){
+                    numbers.push(number[i]);
+                }
+                let newNumber = numbers.join("")
+                return console.log(newNumber);
+            }
+        }
+        reverse(number)
+    </script>
+</body>
+</html>

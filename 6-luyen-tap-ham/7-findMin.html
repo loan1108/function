@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function makeNumbers(){
+            let numbers= [];
+            let count =1;
+            let so_cac_so = +prompt("Nhập vào số các số mà bạn muốn tìm Min");
+            while( count <= so_cac_so){
+
+                num = +prompt("nhập từng số cho đến hết")
+                numbers.push(num);
+                count++
+                
+            }
+            return numbers;
+        }
+        function findMin(arr){
+            let min = arr[0];
+            for(let i =0 ; i < arr.length; i++){
+                if(min >= arr[i]){
+                    min = arr[i];
+                }
+
+            }
+            return console.log(min);
+        }
+        findMin(makeNumbers())
+    </script>
+</body>
+</html>

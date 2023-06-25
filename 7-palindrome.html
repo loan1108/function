@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+</head>
+
+<body>
+    <script>
+        let input = prompt("Check text now");
+        let arr = input.split("");
+        function isPalindrome(arr) {
+            if (arr.length != 0 && arr.length != 1) {
+                while (true) {
+
+                    if (arr.length == 0) {
+                        // alert("The text is a palindrome");
+                        return true
+                    } else {
+                        if (arr[0] == arr[arr.length - 1]) {
+                            arr.pop();
+                            arr.shift();
+                            console.log(arr)
+                        } else {
+                            //alert("The text is not a palindrome");
+                            return false;
+                        }
+                        arr;
+
+                    }
+                }
+            } else {
+                alert("Please input again")
+            }
+
+        }
+       console.log(isPalindrome(arr)) 
+    </script>
+</body>
+
+</html>

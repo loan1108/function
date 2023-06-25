@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+    
+    function checkNumber(letter){
+        let arr= [ 2, 4, 5, 1, "h", "hello", "h"]; 
+        let flag = false;
+        let count = 0;
+        for(let i = 0; i < arr.length; i++){
+            
+            if( letter == arr[i]){
+                count +=1;
+                flag = true;
+
+            }
+        }
+        if(flag != true){
+            return console.log(-1)
+        }
+        return console.log(count)
+    }
+    let number = prompt("Input any ");
+    checkNumber(number);
+    </script>
+</body>
+</html>
