@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product management</title>
+    <style>
+      form {
+        width: 350px;
+        margin-bottom: 10px;
+        padding: 20px;
+        background-color: lightgray;
+      }
+      #new-product {
+        display: inline-block;
+        height: 35px;
+        width: 80%;
+      }
+      #update-product {
+        display: inline-block;
+        height: 35px;
+        width: 80%;
+      }
+      table {
+        width: 600px;
+        padding: 10px;
+        border-collapse: collapse;
+        border: none;
+      }
+      td {
+        padding: 5px;
+      }
+      tr:nth-child(even) {
+        background-color: lightgray;
+      }
+      .btn {
+        display: inline-block;
+        height: 35px;
+        width: 55px;
+        text-align: center;
+        background-color: lightgreen;
+        color: white;
+        border: none;
+        font-weight: bold;
+      }
+      #table-head {
+        width: 600px;
+        background-color: aqua;
+        padding: 10px;
+      }
+      #totalItems {
+        display: inline-block;
+        margin-left: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h3>Add New Product</h3>
+      <form>
+        <input type="text" placeholder="New product" id="new-product" />
+        <button type="button" class="btn" onclick="addItems()">Add</button>
+      </form>
+    </div>
+    <div>
+      <h4>Update Product</h4>
+      <form>
+        <input type="text" placeholder="Update product" id="update-product" />
+        <button
+          type="button"
+          class="btn"
+          onclick="updateItem(editItem)"
+          id="updateBtn"
+        >
+          Update
+        </button>
+      </form>
+    </div>
+    <div>
+      <h3>Display All Product</h3>
+      <p id="table-head">
+        <span>Product name</span><span id="totalItems">0 product</span>
+      </p>
+      <table id="product-list"></table>
+    </div>
+    <script>
+      const products = [];
+      function addItems() {
+        let newProduct = document.getElementById("new-product").value;
+        products.push(newProduct);
+        //console.log(products)
+        displayItems();
+      }
+      //const products = ["Sony Xperia", "Samsung Galaxy", "Nokia 6"];
+      function displayItems() {
+        let totalItems = document.getElementById("totalItems");
+        if (products.length == 0 || products.length == 1) {
+          totalItems.innerHTML = `${products.length} product`;
+        } else {
+          totalItems.innerHTML = `${products.length} products`;
+        }
+        let productList = document.getElementById("product-list");
+        let str = "";
+        for (let i = 0; i < products.length; i += 1) {
+          str += `<tr>
+                          <td>${products[i]}</td>
+                          <td><button type="button" class="btn" onclick="editItem(${i})">Edit</button></td>
+                          <td><button type="button" class="btn" onclick="deleteItem(${i})">Delete</button></td>
+                      </tr>`;
+        }
+        productList.innerHTML = str;
+      }
+      function deleteItem(index) {
+        products.splice(index, 1);
+        displayItems();
+      }
+
+      //Làm thế nào để chỉ khi check == true thì mới được update giá trị mới, hiện tại em test thì check == false vẫn được update new ??
+      let currentIndex = -1;
+      function editItem(index) {
+        document.getElementById("updateBtn").disabled = false;
+        let check = confirm("Do you want to edit the product?");
+        currentIndex = index;
+        //console.log(check)
+        return check;
+      }
+
+      function updateItem(a) {
+        // console.log(currentIndex)
+        if (a) {
+          let updateItem = document.getElementById("update-product").value;
+          products[currentIndex] = updateItem;
+          displayItems();
+        }
+
+        document.getElementById("updateBtn").disabled = true;
+      }
+    </script>
+  </body>
+</html>
